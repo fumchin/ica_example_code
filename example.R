@@ -20,8 +20,8 @@ plot(1:1000, S_noise[,2], type = "l", xlab = "S2", ylab = "", main = "Source")
 plot(1:1000, S_noise[,3], type = "l", xlab = "S2", ylab = "") 
 
 # create mixture matirx  --------------------------
-A = cbind(c(1, 1, 1), c(0.5, 2.0, 1.0), c(1.5, 1.0, 2.0))
-X = S_noise %*% A
+A = rbind(c(1, 1, 1), c(0.5, 2.0, 1.0), c(1.5, 1.0, 2.0))
+X = S_noise %*% t(A)
 # par(mfcol = c(1, 3))
 plot(1:1000, X[,1], type = "l",xlab = "X1", ylab = "")
 plot(1:1000, X[,2], type = "l", xlab = "X2", ylab = "", main = "Mix")
@@ -37,7 +37,7 @@ plot(1:1000, S1_extracted, type = "l", xlab = "S'1", ylab = "")
 plot(1:1000, S2_extracted, type = "l", xlab = "S'2", ylab = "", main = "ICA")
 plot(1:1000, S3_extracted, type = "l", xlab = "S'3", ylab = "")
 
-# Independent Component Analysis  --------------------------
+# Combine  --------------------------
 par(mfrow = c(3, 1))
 plot(1:1000, S_noise[,1], type = "l",xlab = "S", ylab = "", col='red') 
 lines(S_noise[,2], col='blue')
